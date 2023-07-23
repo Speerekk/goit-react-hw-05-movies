@@ -6,11 +6,11 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-const Home = React.lazy(() => import('./Home'));
-const Movies = React.lazy(() => import('./Movies'));
-const MovieDetails = React.lazy(() => import('./MovieDetails'));
-const Cast = React.lazy(() => import('./Cast'));
-const Reviews = React.lazy(() => import('./Reviews'));
+const Home = React.lazy(() => import('./Home/Home'));
+const Movies = React.lazy(() => import('./Movies/Movies'));
+const MovieDetails = React.lazy(() => import('./MovieDetails/MoviesDetails'));
+const Cast = React.lazy(() => import('./Cast/Cast'));
+const Reviews = React.lazy(() => import('./Reviews/Reviews'));
 
 function App() {
   return (
