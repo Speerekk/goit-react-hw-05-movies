@@ -1,7 +1,5 @@
-// App.jsx
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Movies = React.lazy(() => import('./components/Movies/Movies'));
 const MovieDetails = React.lazy(() =>
@@ -14,11 +12,15 @@ function App() {
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/movies" component={Movies} />
-        <Route exact path="/movies/:movieId" component={MovieDetails} />
-        <Route exact path="/movies/:movieId/cast" component={Cast} />
-        <Route exact path="/movies/:movieId/reviews" component={Reviews} />
+        <Routes>
+          {' '}
+          {}
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/movies/:movieId/cast" element={<Cast />} />
+          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+        </Routes>
       </Suspense>
     </Router>
   );
