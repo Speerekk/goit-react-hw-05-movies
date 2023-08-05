@@ -1,5 +1,7 @@
+// components/Home/Home.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import MovieCard from '../MovieCard/MovieCard';
 
 function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -18,11 +20,9 @@ function Home() {
   return (
     <div>
       <h2>Trending Movies</h2>
-      <ul>
-        {trendingMovies.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
+      {trendingMovies.map(movie => (
+        <MovieCard key={movie.id} movie={movie} />
+      ))}
     </div>
   );
 }

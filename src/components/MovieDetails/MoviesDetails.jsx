@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 function MovieDetails() {
   const { movieId } = useParams();
@@ -21,7 +21,19 @@ function MovieDetails() {
     <div>
       <h2>{movieDetails.title}</h2>
       <p>{movieDetails.overview}</p>
-      {/* Render additional movie details here */}
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+        alt={movieDetails.title}
+      />
+      <p>Rating: {movieDetails.vote_average}</p>
+      <p>
+        Genres:{' '}
+        {movieDetails.genres &&
+          movieDetails.genres.map(genre => genre.name).join(', ')}
+      </p>
+      {/* Add links to "Cast" and "Reviews" pages */}
+      <Link to={`/movies/${movieId}/cast`}>Cast</Link> |{' '}
+      <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
     </div>
   );
 }
