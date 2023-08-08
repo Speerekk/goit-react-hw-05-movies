@@ -63,3 +63,23 @@ code {
   height: 20px;
   margin-right: 5px;
 }
+
+.about {
+  max-width: 600px;
+  display: column;
+
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.button-about {
+  margin-bottom: 30px;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+}
+
+.button-about button {
+  margin-right: 10px;
+}
