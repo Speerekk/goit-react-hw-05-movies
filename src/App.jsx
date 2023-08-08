@@ -1,4 +1,3 @@
-// App.js
 import React, { Suspense } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import './index.css'; // Import the CSS file

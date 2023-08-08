@@ -6,7 +6,6 @@ function MovieSearch() {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    // Implement your search functionality here
     navigate(`/movies?query=${encodeURIComponent(searchQuery)}`);
   };
 

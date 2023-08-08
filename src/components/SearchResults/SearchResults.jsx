@@ -9,7 +9,7 @@ function SearchResults() {
   return (
     <div>
       <h2>Search Results for: {query}</h2>
-      {/* Отображение результатов */}
+      {/* Дополнительная логика для отображения результатов */}
     </div>
   );
 }
