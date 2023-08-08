@@ -5,6 +5,9 @@ import './index.css'; // Import the CSS file
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Movies = React.lazy(() => import('./components/Movies/Movies'));
+const SearchResults = React.lazy(() =>
+  import('./components/SearchResults/SearchResults')
+);
 const MovieDetails = React.lazy(() =>
   import('./components/MovieDetails/MoviesDetails')
 );
@@ -18,13 +21,11 @@ function App() {
         <nav>
           <ul className="navigation">
             <li>
-              {/* No need for 'exact' prop here */}
               <Link to="/" className="nav-link">
                 Home
               </Link>
             </li>
             <li>
-              {/* No need for 'exact' prop here */}
               <Link to="/movies" className="nav-link">
                 Movies
               </Link>
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies/*" element={<Movies />} />
+          <Route path="/movies/search-results" element={<SearchResults />} />
           <Route path="/movies/:movieId" element={<MovieDetails />} />
           <Route path="/movies/:movieId/cast" element={<Cast />} />
           <Route path="/movies/:movieId/reviews" element={<Reviews />} />

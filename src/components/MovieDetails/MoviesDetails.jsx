@@ -46,7 +46,9 @@ function MovieDetails() {
 
   return (
     <div>
-      <button onClick={handleGoBack}>Go Back</button>
+      <button onClick={handleGoBack} className="button-back">
+        Go Back
+      </button>
       <div className="about">
         {movieDetails.poster_path && (
           <img
