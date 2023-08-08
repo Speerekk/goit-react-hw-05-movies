@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function MovieDetails() {
   const { movieId } = useParams();
@@ -9,6 +9,7 @@ function MovieDetails() {
   const [reviewsData, setReviewsData] = useState([]);
   const [showCast, setShowCast] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
+  const navigate = useNavigate(); // Используем хук useNavigate
 
   useEffect(() => {
     axios
@@ -39,9 +40,13 @@ function MovieDetails() {
       .catch(error => console.error(error));
   }, [movieId]);
 
+  const handleGoBack = () => {
+    navigate(-1); // Используем navigate для навигации назад
+  };
+
   return (
     <div>
-      <Link to="/movies">Go Back</Link> {/* Кнопка Go Back */}
+      <button onClick={handleGoBack}>Go Back</button>
       <div className="about">
         {movieDetails.poster_path && (
           <img
