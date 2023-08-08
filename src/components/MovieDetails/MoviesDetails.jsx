@@ -9,7 +9,7 @@ function MovieDetails() {
   const [reviewsData, setReviewsData] = useState([]);
   const [showCast, setShowCast] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
-  const navigate = useNavigate(); // Используем хук useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
