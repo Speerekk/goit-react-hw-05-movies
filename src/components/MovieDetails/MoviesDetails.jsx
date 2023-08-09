@@ -40,8 +40,16 @@ function MovieDetails() {
       .catch(error => console.error(error));
   }, [movieId]);
 
+  const handleCastClick = () => {
+    setShowCast(!showCast);
+  };
+
+  const handleReviewsClick = () => {
+    setShowReviews(!showReviews);
+  };
+
   const handleGoBack = () => {
-    navigate(-1); // Используем navigate для навигации назад
+    navigate(-1);
   };
 
   return (
@@ -65,41 +73,39 @@ function MovieDetails() {
           {movieDetails.genres &&
             movieDetails.genres.map(genre => genre.name).join(', ')}
         </p>
-      </div>
-      <div className="button-about">
-        <button onClick={() => setShowCast(!showCast)}>
+        <button onClick={handleCastClick} className="button-about">
           {showCast ? 'Hide Cast' : 'Show Cast'}
         </button>
-        {showCast && (
-          <div>
-            <h3>Cast</h3>
-            <ul>
-              {castData.map(actor => (
-                <li key={actor.id}>
-                  {actor.name} as {actor.character}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <button onClick={() => setShowReviews(!showReviews)}>
+        <button onClick={handleReviewsClick} className="button-about">
           {showReviews ? 'Hide Reviews' : 'Show Reviews'}
         </button>
-        {showReviews && (
-          <div>
-            <h3>Reviews</h3>
-            <ul>
-              {reviewsData.map(review => (
-                <li key={review.id}>
-                  <h4>{review.author}</h4>
-                  <p>{review.content}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
+
+      {showCast && (
+        <div>
+          <h3>Cast</h3>
+          <ul>
+            {castData.map(actor => (
+              <li key={actor.id}>
+                {actor.name} as {actor.character}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {showReviews && (
+        <div>
+          <h3>Reviews</h3>
+          <ul>
+            {reviewsData.map(review => (
+              <li key={review.id}>
+                <h4>{review.author}</h4>
+                <p>{review.content}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

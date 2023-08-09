@@ -7,7 +7,6 @@ function Cast() {
   const [castData, setCastData] = useState([]);
 
   useEffect(() => {
-    // Запрос к API themoviedb.org для получения информации о актерском составе фильма
     axios
       .get(`https://api.themoviedb.org/3/movie/${movieId}/credits`, {
         params: {

@@ -7,7 +7,7 @@ function Reviews() {
   const [reviewsData, setReviewsData] = useState([]);
 
   useEffect(() => {
-    // Запрос к API themoviedb.org для получения обзоров фильма
+    // Fetch reviews using axios
     axios
       .get(`https://api.themoviedb.org/3/movie/${movieId}/reviews`, {
         params: {
@@ -24,7 +24,7 @@ function Reviews() {
       <ul>
         {reviewsData.map(review => (
           <li key={review.id}>
-            <h3>{review.author}</h3>
+            <h4>{review.author}</h4>
             <p>{review.content}</p>
           </li>
         ))}
