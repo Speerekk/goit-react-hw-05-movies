@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Добавляем Link сюда
 
 function Movies() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = event => {
     event.preventDefault();
@@ -17,6 +18,8 @@ function Movies() {
       })
       .then(response => setSearchResults(response.data.results))
       .catch(error => console.error(error));
+
+    navigate(`/movies?query=${encodeURIComponent(searchQuery)}`);
   };
 
   return (

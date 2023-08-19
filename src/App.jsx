@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import './index.css'; // Import the CSS file
+import './index.css'; // Импорт CSS файла
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Movies = React.lazy(() => import('./components/Movies/Movies'));

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function MovieSearch() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
   const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const existingQuery = queryParams.get('query') || '';
+
+  const [searchQuery, setSearchQuery] = useState(existingQuery);
 
   const handleSearch = () => {
-    navigate(`/movies?query=${encodeURIComponent(searchQuery)}`);
+    navigate(`/movies/search-results?query=${encodeURIComponent(searchQuery)}`);
   };
 
   return (
