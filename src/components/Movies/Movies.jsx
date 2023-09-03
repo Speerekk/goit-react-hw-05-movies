@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom'; // Добавляем Link сюда
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 
 function Movies() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const query = queryParams.get('query');
+    if (query) {
+      setSearchQuery(query);
+      axios
+        .get('https://api.themoviedb.org/3/search/movie', {
+          params: {
+            api_key: 'e9ca223ab9ca4a994e59de0722330ef2',
+            query: query,
+          },
+        })
+        .then(response => setSearchResults(response.data.results))
+        .catch(error => console.error(error));
+    }
+  }, [location.search]);
 
   const handleSearch = event => {
     event.preventDefault();
